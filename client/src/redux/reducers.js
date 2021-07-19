@@ -81,7 +81,7 @@ const reducer = (state=defaultState, action) => {
                 })
             };
 
-        // if the action type is "CEAR_CART"
+        // if the action type is "CLEAR_CART"
         case CLEAR_CART:
             return {
                 ...state,

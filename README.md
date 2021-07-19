@@ -4,7 +4,7 @@
 ## Description
 This is an e-commerce platform where users can "purchase" items (items not really for sale) by adding them to their cart and checking out. It was refactored to manage state with Redux instead of ContextAPI. 
 
-![Screenshot of app](./screenshot.png "shop-shop")
+![Screenshot of app](./shopshop.png "shop-shop")
 
 
 ## Table of Contents
