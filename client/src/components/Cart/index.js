@@ -2,28 +2,24 @@ import { useLazyQuery } from '@apollo/client';
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import './style.css';
-import { useStoreContext } from '../../utils/GlobalState';
+// import { useStoreContext } from '../../utils/GlobalState';
 import React, { useEffect } from "react";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
+import { useSelector, useDispatch, } from 'react-redux';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
-    const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+    const state = useSelector((state) => {
+        return state
+    });
 
-    const [state, dispatch] = useStoreContext();
-    useEffect(() => {
-        async function getCart() {
-            const cart = await idbPromise('cart', 'get');
-            dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-        };
-        if(!state.cart.length) {
-            getCart();
-        }
-    }, [state.cart.length, dispatch]);
+    const dispatch = useDispatch();
+
+    const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
     useEffect(() => {
         if (data) {
             stripePromise.then((res) => {
