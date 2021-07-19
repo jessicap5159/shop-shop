@@ -22,7 +22,7 @@ function ProductList() {
 
   useEffect(() => {
     // if there's data to be stored
-    if (data) {
+    if(data) {
       // let's store it in the global state object
       dispatch({
         type: UPDATE_PRODUCTS,
