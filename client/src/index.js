@@ -1,26 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
+import store from "./redux/store"
 import * as serviceWorker from './serviceWorker';
-
-import { createStore } from 'redux';
-import reducer from '../src/utils/reducers';
-
-const store = createStore(reducer);
-console.log('I am the store current state', store.getState());
-
-export default store;
-
-// Store
-
-// Action
-
-// Reducer
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
